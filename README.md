@@ -21,25 +21,15 @@ Traditional intrusion detection often relies on rigid, static rules. This projec
 ## 🏗️ End-to-End Pipeline Architecture
 
 Raw Network Input Payload (JSON)
-              │
-              ▼
-1. Pydantic Input Validation & Padding
-   (Fills default values for non-provided attributes)
-              │
-              ▼
-2. ColumnTransformer Preprocessing
-   ├── Numerical Features: StandardScaler()
-   └── Categorical Features: OrdinalEncoder()
-              │
-              ▼
-3. Feature Selection
-   └── SelectKBest()
-              │
-              ▼
-4. Inference
-   └── XGBoost Classifier
-              │
-              ▼
+
+1. Pydantic Input Validation & Padding (Fills default values for non-provided attributes)
+
+2. ColumnTransformer Preprocessing: Numerical Features: StandardScaler() / Categorical Features: OrdinalEncoder()
+
+3. Feature Selection: SelectKBest()
+
+4. Inference: XGBoost Classifier
+
 Prediction Response JSON
 ({ "prediction_label": "MALICIOUS ATTACK / ANOMALY", "confidence_score": 99.12 })
 
